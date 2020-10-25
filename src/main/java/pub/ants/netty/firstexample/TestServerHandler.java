@@ -24,6 +24,14 @@ public class TestServerHandler extends SimpleChannelInboundHandler<HttpObject> {
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
+
+        // 打印msg类
+        System.out.println(msg.getClass());
+        // 打印远程的客户端地址
+        System.out.println(ctx.channel().remoteAddress());
+
+        Thread.sleep(20000);
+
         if (msg instanceof HttpRequest) {
             HttpRequest httpRequest = (HttpRequest) msg;
             System.out.println("请求方法名：" + httpRequest.method().name());
@@ -45,6 +53,63 @@ public class TestServerHandler extends SimpleChannelInboundHandler<HttpObject> {
 
             // 写回客户端并刷新
             ctx.writeAndFlush(response);
+            // 异步关闭通道
+            ctx.channel().close();
         }
+    }
+
+    /**
+     * 当通道活动的时候调用这个方法
+     * @param ctx
+     * @throws Exception
+     */
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel channelActive");
+        ctx.fireChannelActive();
+    }
+
+    /**
+     * 当注册通道调用
+     * @param ctx
+     * @throws Exception
+     */
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel channelRegistered");
+        super.channelRegistered(ctx);
+    }
+
+    /**
+     * 通道被添加
+     * @param ctx
+     * @throws Exception
+     */
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel handlerAdded");
+        super.handlerAdded(ctx);
+    }
+
+    /**
+     * 通道处于不活动状态
+     * @param ctx
+     * @throws Exception
+     */
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel channelInactive");
+        super.channelInactive(ctx);
+    }
+
+    /**
+     * 通道取消注册
+     * @param ctx
+     * @throws Exception
+     */
+    @Override
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel channelUnregistered");
+        super.channelUnregistered(ctx);
     }
 }
