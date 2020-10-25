@@ -48,7 +48,7 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {
 
     /**
      * 连接断开
-     *
+     * 当客户端与服务器端建立长链接，这时不退出应用关机或开机飞行模式，是不会触发handlerRemoved调用
      * @param ctx
      * @throws Exception
      */
