@@ -112,4 +112,10 @@ public class TestServerHandler extends SimpleChannelInboundHandler<HttpObject> {
         System.out.println("channel channelUnregistered");
         super.channelUnregistered(ctx);
     }
+
+    @Override
+    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel handlerRemoved");
+        super.handlerRemoved(ctx);
+    }
 }
