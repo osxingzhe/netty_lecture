@@ -11,7 +11,7 @@ import java.nio.channels.FileChannel;
  * @date 2020/11/28 下午10:56
  * @description: No Description
  */
-public class NooTest4 {
+public class NioTest4 {
 
     public static void main(String[] args) throws Exception {
         FileInputStream inputStream = new FileInputStream("input.txt");
