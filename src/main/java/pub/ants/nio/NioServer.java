@@ -10,7 +10,6 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
 
@@ -19,6 +18,7 @@ import java.util.UUID;
  * @version: 1.0
  * @date: 2020/11/29 11:00 下午
  * @description: 聊天程序服务端
+ *  消息量不大，但是连接多
  */
 public class NioServer {
 
