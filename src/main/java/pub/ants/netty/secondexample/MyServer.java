@@ -13,6 +13,11 @@ import io.netty.handler.logging.LoggingHandler;
  * @date 2020/10/25 上午10:12
  * @description: No Description
  * 通过socket数据进行双向传输
+ * EventLoopGroup->NioEventLoopGroup
+ * ServerBootstrap
+ * NioServerSocketChannel
+ * Future->Future->ChannelFuture
+ *
  */
 public class MyServer {
     public static void main(String[] args) throws Exception {
@@ -27,6 +32,9 @@ public class MyServer {
                     .handler(new LoggingHandler())
                     // 针对workGroup
                     .childHandler(new MyServerInitializer());
+            /**
+             * bind创建并注册
+             */
             ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
             channelFuture.channel().closeFuture().sync();
 
