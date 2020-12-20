@@ -1,0 +1,7 @@
+Reactor模式   反应器模式
+Proactor模式
+Netty整体架构师Reactor模式的完整实现。
+
+channel 连接file、socket等，支持非阻塞读
+buffers 类似数据，能直接从channel直接读写
+selectors 告诉channel事件
