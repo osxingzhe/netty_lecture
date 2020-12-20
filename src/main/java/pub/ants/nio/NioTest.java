@@ -46,18 +46,8 @@ import java.security.SecureRandom;
 public class NioTest {
 
     public static void main(String[] args) {
-        IntBuffer intBuffer = IntBuffer.allocate(10);
-
-        for(int i=0;i<intBuffer.capacity();i++){
-            int val = new SecureRandom().nextInt(10);
-            intBuffer.put(val);
-        }
-
-        intBuffer.flip();
-
-        while (intBuffer.hasRemaining()){
-            System.out.println(intBuffer.get());
-        }
+        int x = 32768*32768;
+        System.out.println(x);
     }
 
 }
